@@ -1,0 +1,24 @@
+//Create DirectoryInfo
+
+DirectoryInfo NewDataDir = new DirectoryInfo(@"C:\Users\Dkaestner\Desktop\DataDir");
+
+
+//Create FileInfo Array to store the wished file 
+// (*\.txt seraches in the newDataDir for any File with the .txt ending,
+//	SearchOption searches in every subfolder of this directory )
+
+FileInfo[] txtFiles = newDataDir.GetFles("*.txt", SearchOption.AllDirectories);
+
+
+// output the length number of the FileInfo Array
+
+Console.WriteLine("Matches {0}",txtFiles.Length);
+
+
+//for each item in the (FileInfo Array) txtFiles the console wr
+
+foreach(Fileinfo file in txtFiles)
+{
+	Console.WriteLine(file.Name);
+	Console.WriteLine(file.Length);
+}

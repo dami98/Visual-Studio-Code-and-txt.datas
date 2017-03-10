@@ -1,0 +1,57 @@
+// First set FilePath where we wanna store or read so no Hardcorde is needed
+
+string textFilePath = @"C:\users\Dkaestner\desktop\datadir\textFile4.dat";
+
+
+// then we initialize a variable with the type of FileInfo
+
+FileInfo datFile = new FileInfo(textFilePath);
+
+
+// then we create a BinaryWriter to add data in the wished location
+
+BinaryWriter bw = new BinaryWriter(datFile.OpenWrite());
+
+
+// initialize the variables with data 
+
+string  rndstrin= "random text";
+int myAge = 42;
+double height =6.23;
+
+
+// Write this data to the txt. File
+
+bw.Write(rndstrin);
+bw.Write(myAge);
+bw.Write(height);
+
+
+// don´t forget to close the BinaryWriter otherwise it will throw an error that the datastream is in use
+
+bw.close();
+
+
+// Create BinaryReader to put out the freshly inputed data
+
+BinaryReader br = new BinaryReader(datFile.OpenRead());
+
+
+// Output the data via Console.WriteLine and the type of data
+
+Console.WriteLine(br.ReadString());
+Console.WriteLine(br.ReadInt32());
+Console.WriteLine(br.ReadDouble());
+
+
+// !!!---------------------------EDIT :---------------------------!!! \\
+________	if more input is made in BinaryWriter and added the	________
+________	BinaryReader has to be in the same order			________										
+________	so if you add let me say one more string with 		________
+________	initialize a string									________
+________	string VARIABLE1 = "Hello"	&&	bw.Write(VARIABLE1)	________
+________	then in binary reader it has to be in the right  	________
+________	order.												________
+________	if you added at the "INDEX 4" the fourth 			________
+________	Console.WriteLine has to be the 					________
+________	Console.WriteLine(br.ReadString());					________

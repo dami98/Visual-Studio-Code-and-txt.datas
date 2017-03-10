@@ -1,0 +1,34 @@
+// first a a Path string to locate where you wanna save
+
+string textFilePath3 = @"C:\Users\Dkaestner\Desktop\DataDir\textFile2.txt";
+
+
+// then Create the StreamWriter with File.Create to point on the Path set before
+
+StreamWriter sw = File.CreateText(textFilePath3);
+
+
+// Write Something with the StreamWriter Variable sw
+
+sw.Write("blablabalablabla");
+sw.writeline("bubububububuuu");
+
+
+// Close StreamWriter because otherwise you would get an error
+
+sw.close();
+
+
+// Initialize StreamReader to read the recently made changes to the in the beginning set textFilePath3
+
+StreamReader sr = File.OpenText(textFilePath3);
+
+
+// write Informations in Console
+	// first Peek the first letter
+		// second read the whole first Line
+			// third read to the end
+			
+Console.WriteLine("Peek: {0}", Convert.toChar(sr.peek()));
+Console.WriteLine("First Sentece: {0}",sw.ReadLine());
+Console.WriteLine("The Rest {0}", sw.ReadToEnd()

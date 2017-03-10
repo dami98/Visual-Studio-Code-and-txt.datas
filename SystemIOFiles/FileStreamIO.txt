@@ -1,0 +1,19 @@
+string textFilePath2 = @"C:\users\dkaestner\Desktop\DataDir\textfile.txt";
+FileStream fs = new FileStream(textFilePath2, FileMode.Create)
+
+string randString = "this is a random string";
+
+byte[] rsbyteArray = Encoding.Default.GetBytes(randString);
+
+fs.Write(rsbyteArray, 0, rsbyteArray.Length);
+fs.position = 0;
+byte[] fileByteArray = new byte[rsbyteArray.length];
+
+for(int i=0;i<rsbyteArray.length; i++)
+{
+	fileByteArray[i] = (byte)fs.ReadByte();
+}
+
+Console.Writeline(Encoding.Default.GetString(fileByteArray));
+
+fs.Close();

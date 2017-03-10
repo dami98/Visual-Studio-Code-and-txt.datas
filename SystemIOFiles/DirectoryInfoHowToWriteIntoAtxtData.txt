@@ -1,0 +1,45 @@
+//first create a new DirectoryInfo()
+
+DirectoryInfo newDir = new DirectoryInfo(C:\users\dkaestner\desktop\NewTestDirectory);
+
+
+//then, if not existing create one
+
+newDir.Create();
+
+
+//Followed by the string[] 
+
+string[] customers
+{
+	"Betty","selma","Aschley"
+};
+
+
+// create the PathFile, so you don´t have to hardcode it //
+// "@" makes you input \ without throwing errors around you // 
+// C: is your standard local Harddrive cause of Floppys if you know what i mean //
+// followed by the Directories you wanna save your txt or another type of data //
+
+string PathFile=@"C:\users\dkaestner\desktop\NewTestDirectory\Customers.txt"
+
+
+//then write to this Directory //
+//first to wich path then which information //
+
+File.WriteAllLines(PathFile, customers);
+
+
+//then print it out so you cab check if you did a mistake
+
+foreach(string cust in File.ReadAllLines(PathFile))
+{
+	Cosnole.WriteLine(cust);
+}
+
+// start datei via C#
+// first add using System.Diagnostic
+
+Process.start(@"C:\users\...")
+or
+System.Diagnostic.Process.start(@"C:\users\...")
