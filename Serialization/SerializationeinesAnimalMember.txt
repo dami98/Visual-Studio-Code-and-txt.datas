@@ -1,0 +1,47 @@
+//Set a new Member of the class Animal named Hund
+
+Animal Hund = new Animal("schnuffel",20,23);
+
+
+// initialize stream to create the data where The hund is going to be saved
+
+Stream str = File.open("AnimalData.dat",FileMode.Create);
+
+
+//Initialize BinaryFormatter
+
+BinaryFormatter bf = new BinaryFormatter();
+
+
+// Serialize the binarry fomratter with the stream path :OPEn file and create if not existing and add Hund
+
+bf.Serialize(str, hund);
+
+
+// close string so you not get errors
+
+str.close();
+
+
+// set hund to null to prove that data has been saved
+
+Hund = null;
+
+
+// Open the edited File 
+
+str = File.open("AnimalData.dat", File.Open);
+
+
+// create new BinaryFormatterr 
+
+bf = new BinaryFormatter();
+
+
+// (convert into Animal type)and deserialize the Stream
+Hund = (Animal)bf.Deserialize(str);
+
+
+// Print out the Hund data
+Console.WriteLine(Hund.ToString();
+

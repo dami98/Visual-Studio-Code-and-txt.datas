@@ -1,0 +1,31 @@
+namespace ConsoleApplication5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Bowser.Weight = 50;									// Change weight to 50 from 120 
+
+            XmlSerializer serialier = new XmlSerializer(typeof(Animal));		 // Create Serializer with the typof(Animal)
+            using (TextWriter tw = new StreamWriter(@"C:\users\dkaestner\desktop\Mario.xml"))  	// create Textwriter with link to Mario.xml
+            {
+                serialier.Serialize(tw, Bowser);				// XmlSerializer serialized über den Tw den Member Bowser von animal
+            }						
+
+            Bowser = null;    //set bowser to null to show it wrote sth.
+
+            XmlSerializer deserializer = new XmlSerializer(typeof(Animal));  // Initialize new Serializer from type of Animal
+
+            TextReader reader = new StreamReader(@"C:\users\dkaestner\desktop\Mario.xml");  // Initialize TextReader pointing to the before written path Mario.xml
+            object obj = deserializer.Deserialize(reader); 						// obj takes the value of the  read data
+            Bowser = (Animal)obj;												// bowser takes the values of obj converted to an animal type of data
+            reader.Close();														// close the reader stream to protect errors
+
+            Console.WriteLine(Bowser.ToString());								// Write the values of bowser with ToString();
+
+			
+            Console.ReadLine();
+        }
+    }
+}
